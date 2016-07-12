@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="groupTournament">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
+      integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" 
+      crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <h1>Group</h1>
+    
+    <group-tournament
+      teams="teams"
+      matches="matches"
+      num="2"
+      admin="true"
+      cols="w,l,p">
+    </group-tournament>
+    
+    <script src="app.js"></script>
+    <script src="groupTournament.js"></script>
+  </body>
+  
+</html>
