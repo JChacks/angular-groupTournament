@@ -1,0 +1,46 @@
+<div class="table-responsive">
+  <input ng-model="admin" type="checkbox" name="vehicle" value="Bike"> Admin?
+  <br>
+  <div ng-repeat="match in matches">{{match}}</div>
+  <br>
+  <div ng-repeat="(name, item) in data">{{name}}:{{item}}</div>
+  <table class="table">
+    <tr>
+      <th> </th>
+      <th ng-show="cols.includes('w')">W</th>
+      <th ng-show="cols.includes('l')">L</th>
+      <th ng-show="cols.includes('t')">T</th>
+      <th ng-show="cols.includes('p')">P</th>
+      <th ng-show="cols.includes('d')">±</th>
+    </tr>
+    <tr 
+      ng-repeat="team in teams" 
+      ng-mouseenter="team.highlight = true"
+      ng-mouseleave="team.highlight = false"
+      ng-style="team.highlight ? {'background-color': 'orange'} : {'background-color':'none'}">
+      <td>{{team.name}}</td>
+      <td ng-show="cols.includes('w')">{{data[team.name].w}}</td>
+      <td ng-show="cols.includes('l')">{{data[team.name].l}}</td>
+      <td ng-show="cols.includes('t')">{{data[team.name].t}}</td>
+      <td ng-show="cols.includes('p')">{{data[team.name].p}}</td>
+      <td ng-show="cols.includes('d')">{{data[team.name].d}}</td>
+    </tr>
+  </table>
+  <h1><a ng-click="showRounds()">Rounds</a></h1>
+  <div ng-show="roundAreaShow"><!-- ng-repeat="round in rounds" -->
+    <table class="table">
+      <tr ng-repeat="match in matches">
+        <td ng-style="teams[match.teamA].highlight ? {'background-color': 'orange'} : {'background-color':'none'}">{{teams[match.teamA].name}}</td>
+        <td ng-show="admin">
+          <input data-ng-change="sync()" style="width:30px;" ng-model="match.scoreA" />
+        </td>
+        <td ng-hide="admin">{{match.teamAScore}}</td>
+        <td ng-show="admin">
+          <input data-ng-change="sync()" style="width:30px;" ng-model="match.scoreB" />
+        </td>
+        <td ng-hide="admin">{{match.teamBScore}}</td>
+        <td ng-style="teams[match.teamB].highlight ? {'background-color': 'orange'} : {'background-color':'none'}">{{teams[match.teamB].name}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
